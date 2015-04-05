@@ -231,21 +231,42 @@ public class OpenGL implements GLEventListener, MouseListener, MouseMotionListen
 		rotateTempY=0;
 		
 	    // draw
-		gl.glPushMatrix();
-		gl.glRotated(90, -1, 0, 0);
+		// centre
 		GLUquadric centre = glu.gluNewQuadric();
 		glu.gluSphere(centre, 0.1, 20, 20);
+		// eix x
+		gl.glPushMatrix();
+//	    float materialColor[] = {0.8f, 0.2f, 0.0f, 1.0f};
+//	    gl.glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, materialColor,0);
+		gl.glRotated(90, 0, 1, 0);
+		GLUquadric eixx = glu.gluNewQuadric();
+		glu.gluCylinder(eixx, .05, .05, 1, 10, 10);
+		GLUquadric puntax = glu.gluNewQuadric();
+		gl.glTranslated(0, 0, 1);
+		glu.gluCylinder(puntax, .1, 0, .2, 10, 10);
+		gl.glPopMatrix();
+		// eix y
+		gl.glPushMatrix();
+//	    materialColor[0] = 0.0f;
+//	    materialColor[1] = 0.0f;
+//	    materialColor[2] = 0.9f;
+//	    gl.glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, materialColor,0);
+		gl.glRotated(180, 1, 0, 0);
+		GLUquadric eixY = glu.gluNewQuadric();
+		glu.gluCylinder(eixY, .05, .05, 1, 10, 10);
+		GLUquadric puntaY = glu.gluNewQuadric();
+		gl.glTranslated(0, 0, 1);
+		glu.gluCylinder(puntaY, .1, 0, .2, 10, 10);
+		gl.glPopMatrix();
+		// eix z
+		gl.glPushMatrix();
+		gl.glRotated(90, -1, 0, 0);
 		GLUquadric eixz = glu.gluNewQuadric();
 		glu.gluCylinder(eixz, .05, .05, 1, 10, 10);
 		GLUquadric puntaz = glu.gluNewQuadric();
-		gl.glPushMatrix();
 		gl.glTranslated(0, 0, 1);
 		glu.gluCylinder(puntaz, .1, 0, .2, 10, 10);
 		gl.glPopMatrix();
-
-		gl.glRotated(45, 0, 1, 0);
-		GLUquadric puntax = glu.gluNewQuadric();
-		glu.gluCylinder(puntax	, .1, 0, .2, 10, 10);
 		
 		gl.glGetFloatv(GL2.GL_MODELVIEW_MATRIX, modelMatrix, 0);
 	
