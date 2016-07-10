@@ -1,4 +1,4 @@
-package jpo.broadcast.parameters;
+package jpo.broadcast.common;
 
 public class Parameters {
 	

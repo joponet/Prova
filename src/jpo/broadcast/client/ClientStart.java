@@ -8,7 +8,8 @@ import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.net.NetworkInterface;
 
-import jpo.broadcast.parameters.Parameters;
+import jpo.broadcast.common.Parameters;
+import jpo.broadcast.common.Interfaces;
 
 public class ClientStart {
 
@@ -26,7 +27,9 @@ public class ClientStart {
 			while (!error) {
 				socket = new MulticastSocket(Parameters.CLIENT_PORT);
 				// socket.setInterface(InetAddress.getByName("192.168.1.36"));
-				socket.setNetworkInterface(NetworkInterface.getByName("wlan0"));
+				Interfaces.listInterfaces();
+//				socket.setNetworkInterface(NetworkInterface.getByName("wlan0"));
+				socket.setNetworkInterface(Interfaces.getInterface());
 				socket.joinGroup(InetAddress.getByName(Parameters.ADDRESS));
 				socket.receive(packet);
 				buffer = packet.getData();

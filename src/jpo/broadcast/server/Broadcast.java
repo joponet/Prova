@@ -9,7 +9,8 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.time.LocalDateTime;
 
-import jpo.broadcast.parameters.Parameters;
+import jpo.broadcast.common.Parameters;
+import jpo.broadcast.common.Interfaces;
 
 
 public class Broadcast extends Thread{
@@ -29,7 +30,9 @@ public class Broadcast extends Thread{
 
 		try {
 			socket = new MulticastSocket(Parameters.SERVER_PORT);
-			socket.setNetworkInterface(NetworkInterface.getByName("wlan0"));
+//			socket.setNetworkInterface(NetworkInterface.getByName("wlan0"));
+			Interfaces.listInterfaces();
+			socket.setNetworkInterface(Interfaces.getInterface());
 			//System.out.println(socket.getLocalAddress());
 			InetAddress address = InetAddress.getByName(Parameters.ADDRESS);
 			
