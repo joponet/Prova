@@ -131,6 +131,7 @@ public class OpenGL implements GLEventListener, MouseListener, MouseMotionListen
 		gl.glGetFloatv(GL2.GL_DEPTH_RANGE, depthRange, 0);
 		
 		info.setGL(drawable);
+		info.display();
 	}
 
 	@Override
